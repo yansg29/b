@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>修改密码</title>
+		<!--强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且不允许用户点击屏幕放大浏览-->
+        <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no"/>
+        <!--WebApp全屏模式   隐藏地址栏-->
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <!--苹果强制全屏显示-->
+        <meta name="apple-touch-fullscreen" content="yes"/>
+        <!--强制全屏显示-->
+        <meta name="full-screen" content="yes"/>
+        <!--制定iphone中safari顶端的状态条的样式（default:白色，black:黑色，black-translucent：半透明）-->
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+        <!--告诉设备忽略将页面中的数字识别为电话号码 -->
+        <meta name="format-detection" content="telephone=no"/>
+        <!--告诉设备忽略将页面中的地址识别 -->
+        <meta name="format-detection" content="address=no"/>
+		<style>
+		    html,body{min-height: 100%;height: 100%;}
+			*{margin: 0;padding: 0;}			
+			.wrap{width: 100%;min-height: 100%;
+			background: -webkit-linear-gradient(rgb(176,78,142),rgb(85,98,148)); 
+			background: -moz-linear-gradient(rgb(176,78,142),rgb(85,98,148)); 
+			background: -o-linear-gradient(rgb(176,78,142),rgb(85,98,148)); 
+			background: -ms-linear-gradient(rgb(176,78,142),rgb(85,98,148));
+			}
+			.top{
+				height: 5.6rem;
+				background: url(img/line_top.png) no-repeat 3.1rem bottom;
+				background-size: 0.04rem;
+			}
+			.center{
+				/*height: 2.55rem;*/
+				background: url(img/line_middle.png) repeat-y 3.1rem;
+				background-size: 0.04rem;
+			}
+			.content{
+				width: 100%;
+				height: 0.85rem;
+				position: relative;		
+			}
+			.content label{
+				display: inline-block;
+				width: 2.70rem;
+				text-align: right;
+				line-height: 0.85rem;
+				font-size: 0.5rem;
+				color: white;
+				float: left;
+			}
+			.content .circle{
+				width: 0.85rem;
+				height: 0.85rem;
+				float: left;
+			}
+			.content .circle span{
+				display: block;
+				width: 0.27rem;
+				height: 0.27rem;
+				background: url(img/now_cycle.png) no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+				left: 2.98rem;
+				top: 50%;
+				margin-top: -0.14rem;
+			}
+			.content .circle .circle-ani{
+				animation: anima 3s infinite;
+			}
+			.content .circle img{
+				width: 0.27rem;
+				height: 0.27rem;
+				position: absolute;
+				left: 2.98rem;
+				top: 50%;
+				margin-top: -0.14rem;
+			}
+			.content input{
+				display: inline-block;
+				background: transparent;
+				border: none;
+				color: ghostwhite;
+				position: absolute;
+				left: 4.0rem;
+				line-height: 0.85rem;
+				font-size: 0.5rem;
+			}
+			.key{
+				margin-top: 0.80rem;
+			}
+			.bottom{
+				height: 3.85rem;
+				background: url(img/line_bottom.png) no-repeat 3.1rem top;
+				background-size: 0.04rem;
+				position: relative;
+			}
+			.btn{
+				width: 3.54rem;
+				height: 1.15rem;
+				background: rgb(243,109,143);
+				border-radius: 5px;
+				border: transparent;
+				color: white;
+				font-size: 0.6rem;
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				margin-left: -1.77rem;
+			}
+			@keyframes anima{
+				from{transform: scale(0);opacity: 1;}
+				to{transform: scale(5.0);opacity: 0;}
+			}
+		</style>
+		<script>
+        //   rem   em 相对单位  基础
+        function refresh() {
+            var deviceWidth = document.documentElement.clientWidth;
+            if (deviceWidth > 1080) {
+                document.documentElement.style.fontSize = 1080 / 10.8 + "px";
+            } else {
+                //  540    50
+                document.documentElement.style.fontSize = deviceWidth / 10.8 + "px";
+            }
+        }
+        refresh();
+        window.onresize = function () {
+            refresh();
+        }
+        </script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="top"></div>
+			<div class="center">
+				<div class="content">
+					<label for="inp">旧密码</label>
+					<div class="circle">
+						<span></span>
+						<img src="img/cycle.png" alt="" />
+					</div>
+					<input type="text" id="inp" placeholder="请在此输入密码" />
+				</div>
+				<div class="content key">
+					<label for="inp">新密码</label>
+					<div class="circle">
+						<span></span>
+						<img src="img/cycle.png" alt="" />
+					</div>
+					<input type="text" id="inp" placeholder="请在此输入密码" />
+				</div>
+				<div class="content key">
+					<label for="inp">确认密码</label>
+					<div class="circle">
+						<span></span>
+						<img src="img/cycle.png" alt="" />
+					</div>
+					<input type="text" id="inp" placeholder="请在此输入密码" />
+				</div>
+			</div>
+			<div class="bottom">
+				<input class="btn" type="button" value="确定" />
+			</div>
+			
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script>
+			$(function(){
+				$(".content").delegate("input","focus",function(){
+					$(this).parent().find("span").addClass("circle-ani");
+				})
+				$(".content").delegate("input","blur",function(){
+					$(this).parent().find("span").removeClass("circle-ani");
+				})
+			})
+		</script>
+	</body>
+</html>

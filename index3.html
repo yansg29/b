@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>个人中心</title>
+		<!--强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且不允许用户点击屏幕放大浏览-->
+        <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no"/>
+        <!--WebApp全屏模式   隐藏地址栏-->
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <!--苹果强制全屏显示-->
+        <meta name="apple-touch-fullscreen" content="yes"/>
+        <!--强制全屏显示-->
+        <meta name="full-screen" content="yes"/>
+        <!--制定iphone中safari顶端的状态条的样式（default:白色，black:黑色，black-translucent：半透明）-->
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+        <!--告诉设备忽略将页面中的数字识别为电话号码 -->
+        <meta name="format-detection" content="telephone=no"/>
+        <!--告诉设备忽略将页面中的地址识别 -->
+        <meta name="format-detection" content="address=no"/>
+		<style>
+		    html,body{min-height: 100%;height: 100%;}
+			*{margin: 0;padding: 0;}			
+			.wrap{width: 100%;min-height: 100%;
+			background: -webkit-linear-gradient(rgb(176,78,142),rgb(85,98,148)); 
+			background: -moz-linear-gradient(rgb(176,78,142),rgb(85,98,148)); 
+			background: -o-linear-gradient(rgb(176,78,142),rgb(85,98,148)); 
+			background: -ms-linear-gradient(rgb(176,78,142),rgb(85,98,148));
+			}
+			.find{
+				width: 2.5rem;
+				height: 1.0rem;
+				border-top-left-radius: 1rem;
+				border-bottom-left-radius: 1rem;
+				background: rgb(243,109,143);
+				color: white;
+				text-align: center;
+				line-height: 1.0rem;
+				font-size: 0.30rem;
+				position: absolute;
+				right: 0rem;
+				top: 0.2rem;
+				z-index: 1;				
+			}
+			.content{
+				width: 10rem;
+				height: 5.20rem;
+				position: relative;
+				top: 0.8rem;
+				left: 50%;
+				margin-left: -5rem;
+			}
+			.con{
+				width: 4.75rem;
+				height: 5.20rem;
+				border-radius: 5px;
+				background: rgba(255,255,255,.5);
+			}
+			.im1{width: 2.85rem;height: 2.85rem;
+			margin: 0.25rem auto;display: block;
+			}
+			.con h5{color: white;text-align: center;
+			font-size: 0.50rem;}
+			.im2{
+				width: 1.0rem;
+				height: 1.0rem;
+				display: block;
+				margin: 0.1rem auto;
+			}
+			.im3{
+				width: 1.0rem;
+				height: 1.0rem;
+				display: block;
+				margin: 0.1rem auto;
+			}
+			.le{float: left;}
+			.ri{float: right;}
+			.con1{
+				height: 4.35rem;
+			    background: rgba(255,255,255,.5);
+			    border-radius: 5px;
+			    margin-top: 0.4rem;
+			    margin-bottom: 0.4rem;
+			}
+			.con1>.im1{
+				margin-left: 1rem;
+			}
+			.con1 h5{
+				color: white;
+				text-align: center;
+			    font-size: 0.50rem;
+			    line-height: 2rem;
+			}
+		</style>
+		<script>
+        //   rem   em 相对单位  基础
+        function refresh() {
+            var deviceWidth = document.documentElement.clientWidth;
+            if (deviceWidth > 1080) {
+                document.documentElement.style.fontSize = 1080 / 10.8 + "px";
+            } else {
+                //  540    50
+                document.documentElement.style.fontSize = deviceWidth / 10.8 + "px";
+            }
+        }
+        refresh();
+        window.onresize = function () {
+            refresh();
+        }
+        </script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="find">修改密码</div>
+			<div class="content">
+				<div class="con le">
+					<img class="im1" src="img/VIPimage01.png" alt="" />
+					<h5>健康体检预约</h5>
+					<img class="im2" src="img/appointment_icon.png"/>
+				</div>
+				<div class="con ri">
+					<img class="im1" src="img/VIPimage02.png" alt="" />
+					<h5>专家诊疗预约</h5>
+					<img class="im2" src="img/appointment_icon.png"/>
+				</div>
+			</div>
+			<div class="content con1">
+				<img class="im1 le" src="img/VIPimage03.png" alt="" />
+				<p class="ri">
+					<h5>华西绿通预约</h5>
+					<img class="im2" src="img/appointment_icon.png"/>
+				</p>
+			</div>
+			<div class="content">
+				<div class="con le">
+					<img class="im1" src="img/VIPimage04.png" alt="" />
+					<h5>住院关怀预约</h5>
+					<img class="im2" src="img/appointment_icon.png"/>
+				</div>
+				<div class="con ri">
+					<img class="im1" src="img/VIPimage05.png" alt="" />
+					<h5>消费明细查询</h5>
+					<img class="im3" src="img/search_icon.png"/>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script>
+			$(function(){
+				$(".content").delegate("input","focus",function(){
+					$(this).parent().find("span").addClass("circle-ani");
+				})
+				$(".content").delegate("input","blur",function(){
+					$(this).parent().find("span").removeClass("circle-ani");
+				})
+				
+				$(".im2").hover(function(){
+					$(this).attr("src","img/appointment_ icon_on.png");
+				},function(){
+					$(this).attr("src","img/appointment_icon.png");
+				})
+			})
+		</script>
+	</body>
+</html>

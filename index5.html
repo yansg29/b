@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>预约输入</title>
+		<!--强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且不允许用户点击屏幕放大浏览-->
+        <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no"/>
+        <!--WebApp全屏模式   隐藏地址栏-->
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <!--苹果强制全屏显示-->
+        <meta name="apple-touch-fullscreen" content="yes"/>
+        <!--强制全屏显示-->
+        <meta name="full-screen" content="yes"/>
+        <!--制定iphone中safari顶端的状态条的样式（default:白色，black:黑色，black-translucent：半透明）-->
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+        <!--告诉设备忽略将页面中的数字识别为电话号码 -->
+        <meta name="format-detection" content="telephone=no"/>
+        <!--告诉设备忽略将页面中的地址识别 -->
+        <meta name="format-detection" content="address=no"/>
+		<style>
+		    html,body{min-height: 100%;height: 100%;}
+			*{margin: 0;padding: 0;}			
+			.wrap{width: 100%;min-height: 100%;
+			background: -webkit-linear-gradient(rgb(176,78,142),rgb(85,98,148)); 
+			background: -moz-linear-gradient(rgb(176,78,142),rgb(85,98,148)); 
+			background: -o-linear-gradient(rgb(176,78,142),rgb(85,98,148)); 
+			background: -ms-linear-gradient(rgb(176,78,142),rgb(85,98,148));
+			}
+			.top{
+				height: 1.45rem;
+				background: url(img/line_top.png) no-repeat 3.1rem bottom;
+				background-size: 0.04rem;
+			}
+			.center{
+				/*height: 2.55rem;*/
+				background: url(img/line_middle.png) repeat-y 3.1rem;
+				background-size: 0.04rem;
+			}
+			.content{
+				width: 100%;
+				height: 0.85rem;
+				position: relative;		
+			}
+			.content label{
+				display: inline-block;
+				width: 2.70rem;
+				text-align: right;
+				line-height: 0.85rem;
+				font-size: 0.5rem;
+				color: white;
+				float: left;
+			}
+			.content .circle{
+				width: 0.85rem;
+				height: 0.85rem;
+				float: left;
+			}
+			.content .circle span{
+				display: block;
+				width: 0.27rem;
+				height: 0.27rem;
+				background: url(img/now_cycle.png) no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+				left: 2.98rem;
+				top: 50%;
+				margin-top: -0.14rem;
+			}
+			.content .circle .circle-ani{
+				animation: anima 3s infinite;
+			}
+			.content .circle img{
+				width: 0.27rem;
+				height: 0.27rem;
+				position: absolute;
+				left: 2.98rem;
+				top: 50%;
+				margin-top: -0.14rem;
+			}
+			.content input{
+				display: inline-block;
+				background: transparent;
+				border: none;
+				color: ghostwhite;
+				position: absolute;
+				left: 4.0rem;
+				line-height: 0.85rem;
+				font-size: 0.5rem;
+			}
+			.content select{
+				background: transparent;
+				border: none;
+				color: ghostwhite;
+				position: absolute;
+				left: 4.0rem;
+				line-height: 0.85rem;
+				font-size: 0.5rem;
+				margin-top: 0.1rem;
+			}
+			.content select>option{
+				color: ghostwhite;
+				font-size: 0.5rem;
+			}
+			.key{
+				margin-top: 0.80rem;
+			}
+			.bottom{
+				height: 3.85rem;
+				background: url(img/line_bottom.png) no-repeat 3.1rem top;
+				background-size: 0.04rem;
+				position: relative;
+			}
+			@keyframes anima{
+				from{transform: scale(0);opacity: 1;}
+				to{transform: scale(5.0);opacity: 0;}
+			}
+		</style>
+		<script>
+        //   rem   em 相对单位  基础
+        function refresh() {
+            var deviceWidth = document.documentElement.clientWidth;
+            if (deviceWidth > 1080) {
+                document.documentElement.style.fontSize = 1080 / 10.8 + "px";
+            } else {
+                //  540    50
+                document.documentElement.style.fontSize = deviceWidth / 10.8 + "px";
+            }
+        }
+        refresh();
+        window.onresize = function () {
+            refresh();
+        }
+        </script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="top"></div>
+			<div class="center">
+				<div class="content">
+					<label for="inp">手机号</label>
+					<div class="circle">
+						<span></span>
+						<img src="img/cycle.png" alt="" />
+					</div>
+					<input type="text" id="inp" placeholder="输入手机号" />
+				</div>
+				<div class="content key">
+					<label for="inp">体验中心</label>
+					<div class="circle">
+					</div>
+					<select name="">
+						<option value="">－－请选择－－</option>
+						<option value="">内容1</option>
+						<option value="">内容2</option>
+					</select>
+				</div>
+				<div class="content key">
+					<label for="inp">姓名</label>
+					<div class="circle"></div>
+					<input type="text" id="inp" placeholder="输入姓名" />
+				</div>
+				<div class="content key">
+					<label for="inp">性别</label>
+					<div class="circle">
+					</div>
+					<select name="">
+						<option value="">－－请选择－－</option>
+						<option value="">男</option>
+						<option value="">女</option>
+					</select>
+				</div>
+				<div class="content key">
+					<label for="inp">年龄</label>
+					<div class="circle"></div>
+					<input type="text" id="inp" placeholder="输入年龄" />
+				</div>
+				<div class="content key">
+					<label for="inp">预约时间</label>
+					<div class="circle"></div>
+					<input type="text" id="inp" placeholder="输入时间" />
+				</div>
+				<div class="content key">
+					<label for="inp">体验套餐</label>
+					<div class="circle">
+					</div>
+					<select name="">
+						<option value="">－－请选择－－</option>
+						<option value="">套餐1</option>
+						<option value="">套餐2</option>
+					</select>
+				</div>
+			</div>
+			<div class="bottom"></div>
+			
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script>
+			$(function(){	
+				$(".char").css("top",$(".content").eq(0).offset().top-52);
+				$(".content").stop(true,true).click(function(){
+					var height=$(this).offset().top-52;
+					$(".char").animate({"top":height})
+					$(this).find("span").addClass("circle-ani")
+					.parent().parent().siblings().find("span").removeClass("circle-ani")
+				})
+			})
+		</script>
+	</body>
+</html>

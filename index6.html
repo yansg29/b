@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>我的预约</title>
+		<!--强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且不允许用户点击屏幕放大浏览-->
+        <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no"/>
+        <!--WebApp全屏模式   隐藏地址栏-->
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <!--苹果强制全屏显示-->
+        <meta name="apple-touch-fullscreen" content="yes"/>
+        <!--强制全屏显示-->
+        <meta name="full-screen" content="yes"/>
+        <!--制定iphone中safari顶端的状态条的样式（default:白色，black:黑色，black-translucent：半透明）-->
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+        <!--告诉设备忽略将页面中的数字识别为电话号码 -->
+        <meta name="format-detection" content="telephone=no"/>
+        <!--告诉设备忽略将页面中的地址识别 -->
+        <meta name="format-detection" content="address=no"/>
+		<style>
+		    html,body{min-height: 100%;height: 100%;}
+			*{margin: 0;padding: 0;}			
+			.wrap{width: 100%;min-height: 100%;
+			background: -webkit-linear-gradient(rgb(176,78,142),rgb(85,98,148)); 
+			background: -moz-linear-gradient(rgb(176,78,142),rgb(85,98,148)); 
+			background: -o-linear-gradient(rgb(176,78,142),rgb(85,98,148)); 
+			background: -ms-linear-gradient(rgb(176,78,142),rgb(85,98,148));
+			}			
+			.top{
+				/*height: 3.29rem;*/
+				background: url(img/line_top.png) no-repeat 1.7rem bottom;
+				background-size: 0.04rem;
+			}
+			.user{
+				width: 4.40rem;
+				height: 1.5rem;
+				border-radius: 2rem;
+				background: rgba(255,255,255,.5);
+				position: relative;
+				top: 1.0rem;
+				left: 1.0rem;				
+			}
+			.user p{
+				width: 2.0rem;
+				height: 1.5rem;
+				float: left;
+				text-align: center;
+				line-height: 1.5rem;
+				font-size: 0.5rem;
+				color: white;
+			}
+			.user-im1{
+				width: 1.5rem;
+				height: 1.5rem;	
+				float: left;			
+			}
+			.user-im2{
+				width: 0.4rem;
+				height: 0.4rem;	
+				float: left;
+				margin-top: 0.55rem;	
+			}
+			.title{
+				width: 8.56rem;
+				height: 0.75rem;
+				position: relative;
+				left: 2.2rem;
+				top: 1.0rem;
+				font-size: 0.24rem;
+				line-height: 0.4rem;
+			}
+			.title tr,td{
+				color: white;
+			}
+			.title-line{
+				width: 8.56rem;
+				height: 0.01rem;
+				position: relative;
+				left: 1.7rem;
+				top: 0.1rem;
+			}
+			.center{
+				background: url(img/line_middle.png) repeat-y 1.7rem;
+				background-size: 0.04rem;
+				position: relative;
+				top: -0.55rem;
+			}
+			.content{
+				width: 100%;
+				height: 0.85rem;
+				position: relative;		
+			}
+			.content label{
+				display: inline-block;
+				width: 1.30rem;
+				text-align: right;
+				line-height: 0.85rem;
+				font-size: 0.5rem;
+				color: white;
+				float: left;
+			}
+			.content .circle{
+				width: 0.85rem;
+				height: 0.85rem;
+				float: left;
+			}
+			.content .circle span{
+				display: block;
+				width: 0.27rem;
+				height: 0.27rem;
+				background: url(img/now_cycle.png) no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+				left: 1.6rem;
+				top: 50%;
+				margin-top: -0.14rem;
+			}
+			.content .circle .circle-ani{
+				animation: anima 3s infinite;
+			}
+			.content .circle img{
+				width: 0.27rem;
+				height: 0.27rem;
+				position: absolute;
+				left: 1.6rem;
+				top: 50%;
+				margin-top: -0.14rem;
+			}
+			.key{
+				margin-top: 0.60rem;
+			}
+			.key1{
+				margin-top: 1.20rem;
+			}
+			.content .content-tab{
+				width: 8.56rem;
+				height: 0.85rem;
+				font-size: 0.24rem;
+				line-height: 0.85rem;
+			    color: white;
+			    position: absolute;
+			    left: 2.2rem;
+			    top: 50%;
+			    margin-top: -0.42rem;
+			}
+			.bottom{
+				height: 3.85rem;
+				background: url(img/line_bottom.png) no-repeat 1.7rem top;
+				background-size: 0.04rem;
+				position: relative;
+				top: -0.55rem;
+			}
+			
+			@keyframes anima{
+				from{transform: scale(0);opacity: 1;}
+				to{transform: scale(5.0);opacity: 0;}
+			}
+		</style>
+		<script>
+        //   rem   em 相对单位  基础
+        function refresh() {
+            var deviceWidth = document.documentElement.clientWidth;
+            if (deviceWidth > 1080) {
+                document.documentElement.style.fontSize = 1080 / 10.8 + "px";
+            } else {
+                //  540    50
+                document.documentElement.style.fontSize = deviceWidth / 10.8 + "px";
+            }
+        }
+        refresh();
+        window.onresize = function () {
+            refresh();
+        }
+        </script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="top">
+				<div class="user">
+					<img class="user-im1" src="img/detailImage01.png" alt="" />
+					<p>2015</p>
+					<img class="user-im2" src="img/detail_select_bg.png" alt="" />
+				</div>
+				<table class="title">
+					<tr><td>消费内容</td><td>消费人</td><td>消费地点</td></tr>			
+				</table>
+				<img class="title-line" src="img/detail_title_line.png" alt="" />
+			</div>
+			<div class="center">
+				<div class="content">
+					<label for="inp"></label>
+					<div class="circle">
+						<span></span>
+						<img src="img/cycle.png" alt="" />						
+					</div>
+				</div>
+				<div class="content">
+					<label for="inp">12.8</label>
+					<div class="circle">
+						<span></span>
+						<img src="img/cycle.png" alt="" />						
+					</div>	
+					<table class="content-tab">
+					<tr><td>体验800元</td><td>刘铭</td><td>华西医院</td></tr>			
+				    </table>
+				</div>
+				<div class="content key">
+					<label for="inp">12.1</label>
+					<div class="circle">
+						<span></span>
+						<img src="img/cycle.png" alt="" />
+					</div>
+					<table class="content-tab">
+					<tr><td>专家门诊1000元</td><td>刘贝</td><td>华西医院</td></tr>			
+				    </table>
+				</div>
+				<div class="content key">
+					<label for="inp">10.5</label>
+					<div class="circle">
+						<span></span>
+						<img src="img/cycle.png" alt="" />
+					</div>
+					<table class="content-tab">
+					<tr><td>体验800元</td><td>刘铭</td><td>华西医院</td></tr>			
+				    </table>
+				</div>
+				<div class="content key">
+					<label for="inp">10.4</label>
+					<div class="circle">
+						<span></span>
+						<img src="img/cycle.png" alt="" />
+					</div>
+					<table class="content-tab">
+					<tr><td>专家门诊1000元</td><td>刘贝</td><td>华西医院</td></tr>			
+				    </table>
+				</div>
+				<div class="content key">
+					<label for="inp">10.1</label>
+					<div class="circle">
+						<span></span>
+						<img src="img/cycle.png" alt="" />
+					</div>
+					<table class="content-tab">
+					<tr><td>体验800元</td><td>刘铭</td><td>华西医院</td></tr>			
+				    </table>
+				</div>
+				<div class="content key">
+					<label for="inp">8.10</label>
+					<div class="circle">
+						<span></span>
+						<img src="img/cycle.png" alt="" />
+					</div>
+					<table class="content-tab">
+					<tr><td>专家门诊1000元</td><td>刘铭</td><td>华西医院</td></tr>			
+				    </table>
+				</div>
+				<div class="content key">
+					<label for="inp"></label>
+					<div class="circle">
+						<span></span>
+						<img src="img/cycle.png" alt="" />
+					</div>
+					<table class="content-tab">
+					<tr><td>没有消费记录了......</td></tr>			
+				    </table>
+				</div>
+			</div>
+			<div class="bottom"></div>
+			
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script>
+			$(function(){	
+				$(".char").css("top",$(".content").eq(0).offset().top-52);
+				$(".content").stop(true,true).click(function(){
+					var height=$(this).offset().top-52;
+					$(".char").animate({"top":height})
+					$(this).find("span").addClass("circle-ani")
+					.parent().parent().siblings().find("span").removeClass("circle-ani")
+				})
+			})
+		</script>
+	</body>
+</html>
